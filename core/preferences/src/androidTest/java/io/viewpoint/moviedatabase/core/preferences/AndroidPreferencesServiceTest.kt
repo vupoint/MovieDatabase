@@ -21,7 +21,7 @@ class AndroidPreferencesServiceTest : TestBase() {
         )
 
     @Test
-    fun preferencesCanGetAndSetStringSet() = runBlocking {
+    fun preferencesCanGetAndSetStringSet(): Unit = runBlocking {
         val preferenceKey = PreferenceKey(
             key = "list_test",
             type = TestData::class

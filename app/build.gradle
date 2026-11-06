@@ -3,13 +3,18 @@ plugins {
     alias(libs.plugins.moviedatabase.android.application.compose)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.parcelize)
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
 }
 
 apply from: '../android-test-dependencies.gradle'
 
 android {
-    namespace "io.viewpoint.moviedatabase"
+    namespace = "io.viewpoint.moviedatabase"
+
+    lint {
+        // shortcut: AGP 9.5.1 crashes while writing SARIF fixes; re-enable after the reporter is fixed.
+        sarifReport = false
+    }
 
     defaultConfig {
         applicationId "io.viewpoint.moviedatabase"
@@ -30,17 +35,13 @@ android {
         debug {
         }
         release {
-            signingConfig signingConfigs.releaseKeystore
+            signingConfig = signingConfigs.releaseKeystore
 
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
             proguardFiles fileTree(dir: 'proguard', include: ['*.pro']).asList().toArray()
         }
     }
-}
-
-kapt {
-    correctErrorTypes true // for hilt
 }
 
 dependencies {
@@ -88,13 +89,12 @@ dependencies {
     // androidx.room
     implementation libs.androidx.room.runtime
     implementation libs.androidx.room
-    kapt libs.androidx.room.compiler
 
     // dagger/hilt
     implementation libs.hilt
-    kapt libs.hilt.kapt
+    ksp libs.hilt.compiler
     // hilt with androidx
-    kapt libs.androidx.hilt.kapt
+    ksp libs.androidx.hilt.compiler
 
     // timber
     implementation libs.timber

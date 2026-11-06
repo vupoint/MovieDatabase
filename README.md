@@ -10,7 +10,12 @@
 
 ## 📋 Prerequisites
 
-- Android Studio Koala | 2024.1.1 (stable)
+- Android Studio Rabbit 2 | 2026.2.2 Patch 1 or a newer version that supports AGP 9.5.
+- JDK 17 for Gradle, locally and in CI.
+- Android SDK Platform 35 and Build Tools 36.0.0. Set your SDK path in the ignored `local.properties` file or `ANDROID_HOME`.
+- Use the checked-in Gradle 9.7.0 wrapper. The build uses AGP 9.5.1, Kotlin and the Compose compiler 2.4.21, and KSP 2.3.13.
+
+Gradle 9.7.0 is within [Kotlin's supported Gradle range](https://kotlinlang.org/docs/gradle-configure-project.html) and meets [AGP 9.5's minimum requirement](https://developer.android.com/build/releases/agp-9-5-0-release-notes). Android modules use AGP's built-in Kotlin support. Hilt, Dagger, and Room use KSP for code generation.
 
 ## 📸 Screenshots
 | splash | home | detail | search |
