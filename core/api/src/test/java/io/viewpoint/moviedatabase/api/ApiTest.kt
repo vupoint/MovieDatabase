@@ -1,8 +1,8 @@
 package io.viewpoint.moviedatabase.api
 
 import kotlinx.coroutines.runBlocking
-import okhttp3.mockwebserver.MockResponse
-import okhttp3.mockwebserver.MockWebServer
+import mockwebserver3.MockResponse
+import mockwebserver3.MockWebServer
 import org.junit.After
 import org.junit.Before
 
@@ -17,7 +17,7 @@ abstract class ApiTest {
 
     @After
     fun shutdownWebServer() {
-        mockServer.shutdown()
+        mockServer.close()
         println("shutdown webserver")
     }
 

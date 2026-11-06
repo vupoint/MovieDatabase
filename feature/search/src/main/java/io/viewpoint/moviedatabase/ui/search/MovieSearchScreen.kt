@@ -23,8 +23,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Clear
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
@@ -179,7 +177,7 @@ private fun SearchInputField(
                 modifier = Modifier
                     .padding(8.dp)
                     .clickable { onSearchKeywordCleared() },
-                imageVector = Icons.Rounded.Clear,
+                painter = painterResource(id = R.drawable.ic_close),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
             )

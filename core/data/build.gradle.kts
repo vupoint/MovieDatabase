@@ -59,10 +59,7 @@ dependencies {
     androidTestImplementation(libs.androidTestJunit)
     androidTestImplementation(libs.androidTestRunner)
 
-    // flipper (don't use a external gradle file, because of build types)
-    debugImplementation("com.facebook.flipper:flipper:0.98.0")
-    debugImplementation("com.facebook.soloader:soloader:0.10.1")
-    debugImplementation("com.facebook.flipper:flipper-network-plugin:0.98.0")
-
-    releaseImplementation("com.facebook.flipper:flipper-noop:0.98.0")
+    debugImplementation(libs.flipper)
+    debugImplementation(libs.soloader)
+    debugImplementation(libs.flipper.network)
 }

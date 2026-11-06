@@ -76,7 +76,7 @@ dependencies {
     implementation libs.androidx.navigation.compose
     implementation libs.androidx.workmanager
     implementation libs.androidx.hilt.work
-    implementation libs.androidx.hilt.navigation.compose
+    implementation libs.androidx.hilt.lifecycle.viewmodel.compose
 
     // compose
     implementation platform(libs.compose.bom)

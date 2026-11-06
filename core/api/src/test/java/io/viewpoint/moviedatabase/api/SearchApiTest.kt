@@ -2,7 +2,7 @@ package io.viewpoint.moviedatabase.api
 
 import io.viewpoint.moviedatabase.api.util.MockResponseReader
 import junit.framework.Assert.fail
-import okhttp3.mockwebserver.MockResponse
+import mockwebserver3.MockResponse
 import org.junit.Test
 import retrofit2.HttpException
 import strikt.api.expectThat
@@ -21,8 +21,9 @@ class SearchApiTest : ApiTest() {
     @Test
     fun `success to search movie`() =
         withMockResponse(
-            MockResponse()
-                .setBody(MockResponseReader.fromFile("responses/search/spider-man.json"))
+            MockResponse.Builder()
+                .body(MockResponseReader.fromFile("responses/search/spider-man.json"))
+                .build()
         ) {
             val api = api.get<SearchApi>()
 
@@ -36,9 +37,10 @@ class SearchApiTest : ApiTest() {
     @Test
     fun `fail to search movie because of authorization`() =
         withMockResponse(
-            MockResponse()
-                .setResponseCode(401)
-                .setBody(MockResponseReader.fromFile("responses/search/spider-man.json"))
+            MockResponse.Builder()
+                .code(401)
+                .body(MockResponseReader.fromFile("responses/search/spider-man.json"))
+                .build()
         ) {
             val api = api.get<SearchApi>()
             val result = runCatching {

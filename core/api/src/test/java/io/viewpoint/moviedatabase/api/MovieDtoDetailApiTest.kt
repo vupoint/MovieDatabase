@@ -2,7 +2,7 @@ package io.viewpoint.moviedatabase.api
 
 import io.viewpoint.moviedatabase.api.util.MockResponseReader
 import junit.framework.Assert.fail
-import okhttp3.mockwebserver.MockResponse
+import mockwebserver3.MockResponse
 import org.junit.Test
 import strikt.api.expectThat
 import strikt.assertions.isEqualTo
@@ -20,9 +20,10 @@ class MovieDtoDetailApiTest : ApiTest() {
 
     @Test
     fun `watch provider api can parse map`() = withMockResponse(
-        MockResponse()
-            .setResponseCode(200)
-            .setBody(MockResponseReader.fromFile("responses/movie-details/watch-providers.json"))
+        MockResponse.Builder()
+            .code(200)
+            .body(MockResponseReader.fromFile("responses/movie-details/watch-providers.json"))
+            .build()
     ) {
         val api = api.get<MovieDetailApi>()
         val result = runCatching {

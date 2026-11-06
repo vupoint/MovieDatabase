@@ -12,10 +12,12 @@
 
 - Android Studio Rabbit 2 | 2026.2.2 Patch 1 or a newer version that supports AGP 9.5.
 - JDK 17 for Gradle, locally and in CI.
-- Android SDK Platform 35 and Build Tools 36.0.0. Set your SDK path in the ignored `local.properties` file or `ANDROID_HOME`.
+- Android SDK Platform 37 and Build Tools 36.0.0. Set your SDK path in the ignored `local.properties` file or `ANDROID_HOME`.
 - Use the checked-in Gradle 9.7.0 wrapper. The build uses AGP 9.5.1, Kotlin and the Compose compiler 2.4.21, and KSP 2.3.13.
 
 Gradle 9.7.0 is within [Kotlin's supported Gradle range](https://kotlinlang.org/docs/gradle-configure-project.html) and meets [AGP 9.5's minimum requirement](https://developer.android.com/build/releases/agp-9-5-0-release-notes). Android modules use AGP's built-in Kotlin support. Hilt, Dagger, and Room use KSP for code generation.
+
+AndroidX and OkHttp require `compileSdk 37`. The minimum supported API remains 24 and the target API remains 34, so this dependency update does not opt into new target-SDK behavior. Compose UI and Material versions are aligned through the Compose BOM in `gradle/libs.versions.toml`.
 
 ## 📸 Screenshots
 | splash | home | detail | search |
@@ -37,7 +39,7 @@ Gradle 9.7.0 is within [Kotlin's supported Gradle range](https://kotlinlang.org/
   - UDF (Unidirectional Data Flow)
 - [Retrofit (w/OkHttp)](https://github.com/square/retrofit): for making network requests and fetching data
 - [Moshi](https://github.com/square/moshi): for serialization/deserialization JSON request, or response
-- [Glide](https://bumptech.github.io/glide/): for loading images of remote resources
+- [Coil](https://coil-kt.github.io/coil/): for loading images of remote resources
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android): for depedency injection
 - [Timber](https://github.com/JakeWharton/timber): for logging
 
