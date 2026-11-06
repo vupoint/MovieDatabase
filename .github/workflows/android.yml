@@ -18,6 +18,8 @@ jobs:
       with:
         distribution: temurin
         java-version: 17
+    - name: Install Android SDK packages
+      run: sdkmanager "platforms;android-37.0" "build-tools;36.0.0"
     - name: Build, test, lint, and collect coverage
       run: ./gradlew --stacktrace :app:assembleDebug :app:assembleRelease :app:lintDebug koverXmlReportMerged :core:data:testDebugUnitTest
     - name: Codecov
