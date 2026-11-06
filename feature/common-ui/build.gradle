@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.moviedatabase.android.library)
     alias(libs.plugins.moviedatabase.android.library.compose)
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.kover)
 }
@@ -9,7 +9,7 @@ plugins {
 apply from: "$rootDir/android-test-dependencies.gradle"
 
 android {
-    namespace "io.viewpoint.moviedatabase.ui.common"
+    namespace = "io.viewpoint.moviedatabase.ui.common"
 }
 
 dependencies {
@@ -47,9 +47,9 @@ dependencies {
 
     // dagger/hilt
     implementation libs.hilt
-    kapt libs.hilt.kapt
+    ksp libs.hilt.compiler
     // hilt with androidx
-    kapt libs.androidx.hilt.kapt
+    ksp libs.androidx.hilt.compiler
 
     // timber
     implementation libs.timber

@@ -9,7 +9,7 @@ object Flags {
     fun getDrawable(context: Context, isoCountryCode: String): Drawable? {
         val resources = context.resources
         val id = resources.getIdentifier(
-            "flag_${isoCountryCode.toLowerCase(Locale.US)}",
+            "flag_${isoCountryCode.lowercase(Locale.US)}",
             "drawable",
             context.packageName
         ).takeIf {

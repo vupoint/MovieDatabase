@@ -3,11 +3,15 @@ import io.viewpoint.moviedatabase.buildlogic.extensions.Externals
 plugins {
     alias(libs.plugins.moviedatabase.android.library)
     alias(libs.plugins.moviedatabase.jvm.external)
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "io.viewpoint.moviedatabase.core.data"
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     buildTypes {
         debug {
@@ -21,6 +25,10 @@ android {
     }
 }
 
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
 dependencies {
     implementation(project(":core:common-coroutines"))
     implementation(project(":core:domain"))
@@ -29,11 +37,11 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
 
     implementation(libs.hilt)
-    kapt(libs.hilt.kapt)
+    ksp(libs.hilt.compiler)
 
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room)
-    kapt(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 
     implementation(libs.timber)
 
@@ -47,6 +55,9 @@ dependencies {
     testImplementation(libs.test.mockk.agent.jvm)
     testImplementation(libs.moshi)
     testImplementation(libs.test.coroutine.test)
+
+    androidTestImplementation(libs.androidTestJunit)
+    androidTestImplementation(libs.androidTestRunner)
 
     // flipper (don't use a external gradle file, because of build types)
     debugImplementation("com.facebook.flipper:flipper:0.98.0")

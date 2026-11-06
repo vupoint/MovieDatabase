@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace "io.viewpoint.moviedatabase.resources"
+    namespace = "io.viewpoint.moviedatabase.resources"
 }
 
 dependencies {

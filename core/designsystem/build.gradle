@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'io.viewpoint.moviedatabase.designsystem'
+    namespace = 'io.viewpoint.moviedatabase.designsystem'
 }
 
 dependencies {

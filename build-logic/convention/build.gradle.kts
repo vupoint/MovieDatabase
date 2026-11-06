@@ -19,10 +19,8 @@ kotlin {
 
 dependencies {
     compileOnly(libs.android.gradle)
-    compileOnly(libs.android.tools.common)
     compileOnly(libs.compose.gradle)
     compileOnly(libs.kotlin.gradle)
-    compileOnly(libs.room.gradle)
     compileOnly(libs.kotlin.kover)
 }
 

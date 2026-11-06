@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.moviedatabase.jvm.library)
-    alias(libs.plugins.kotlin.kapt)
 }
 
 dependencies {

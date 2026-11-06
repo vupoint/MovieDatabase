@@ -5,7 +5,7 @@ plugins {
 apply from: "$rootDir/android-test-dependencies.gradle"
 
 android {
-    namespace "io.viewpoint.moviedatabase.common"
+    namespace = "io.viewpoint.moviedatabase.common"
 }
 
 dependencies {
